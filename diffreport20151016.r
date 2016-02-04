@@ -35,8 +35,8 @@ fs_n_11 <- subset(fs_combine, fs_combine$fs_kmd < 0.1344 & fs_combine$fs_kmd > 0
 fs_n_12 <- subset(fs_combine, fs_combine$fs_kmd < 0.1478 & fs_combine$fs_kmd > 0.1468 & floor(fs_combine$fs_mas) %% 2 == 0)
 fs_n_13 <- subset(fs_combine, fs_combine$fs_kmd < 0.1612 & fs_combine$fs_kmd > 0.1602 & floor(fs_combine$fs_mas) %% 2 == 0)
 fs_n_14 <- subset(fs_combine, fs_combine$fs_kmd < 0.1746 & fs_combine$fs_kmd > 0.1736 & floor(fs_combine$fs_mas) %% 2 == 0)
-fs_n_15 <- subset(fs_combine, fs_combine$fs_kmd < 0.1870 & fs_combine$fs_kmd > 0.1880 & floor(fs_combine$fs_mas) %% 2 == 0)
-fs_n_16 <- subset(fs_combine, fs_combine$fs_kmd < 0.1870 & fs_combine$fs_kmd > 0.1880 & floor(fs_combine$fs_mas) %% 2 == 0)
+fs_n_15 <- subset(fs_combine, fs_combine$fs_kmd < 0.1880 & fs_combine$fs_kmd > 0.1870 & floor(fs_combine$fs_mas) %% 2 == 0)
+
 fs_n <- rbind(fs_n_9, fs_n_10, fs_n_11, fs_n_12, fs_n_13, fs_n_14, fs_n_15)
 
 plot(fs_n$fs_kmd ~ fs_n$fs_knm, main = "feed soil nitrogen containing", xlab ="Kendrick nominal mass", ylab = "Kendrick mass defect")
@@ -47,7 +47,7 @@ ts_n_11 <- subset(ts_combine, ts_combine$ts_kmd < 0.1344 & ts_combine$ts_kmd > 0
 ts_n_12 <- subset(ts_combine, ts_combine$ts_kmd < 0.1478 & ts_combine$ts_kmd > 0.1468 & floor(ts_combine$ts_mas) %% 2 == 0)
 ts_n_13 <- subset(ts_combine, ts_combine$ts_kmd < 0.1612 & ts_combine$ts_kmd > 0.1602 & floor(ts_combine$ts_mas) %% 2 == 0)
 ts_n_14 <- subset(ts_combine, ts_combine$ts_kmd < 0.1746 & ts_combine$ts_kmd > 0.1736 & floor(ts_combine$ts_mas) %% 2 == 0)
-ts_n_15 <- subset(ts_combine, ts_combine$ts_kmd < 0.1870 & ts_combine$ts_kmd > 0.1880 & floor(ts_combine$ts_mas) %% 2 == 0)
+ts_n_15 <- subset(ts_combine, ts_combine$ts_kmd < 0.1880 & ts_combine$ts_kmd > 0.1870 & floor(ts_combine$ts_mas) %% 2 == 0)
 ts_n <- rbind(ts_n_9, ts_n_10, ts_n_11, ts_n_12, ts_n_13, ts_n_14, ts_n_15)
 
 plot(ts_n$ts_kmd ~ ts_n$ts_knm, main = "feed soil nitrogen containing", xlab ="Kendrick nominal mass", ylab = "Kendrick mass defect")
@@ -59,11 +59,11 @@ ts_o2_13 <- subset(ts_combine, ts_combine$ts_kmd < 0.2012 & ts_combine$ts_kmd > 
 ts_o2_14 <- subset(ts_combine, ts_combine$ts_kmd < 0.2146 & ts_combine$ts_kmd > 0.2136 & floor(ts_combine$ts_mas) %% 2 != 0)
 ts_o2_15 <- subset(ts_combine, ts_combine$ts_kmd < 0.2280 & ts_combine$ts_kmd > 0.2270 & floor(ts_combine$ts_mas) %% 2 != 0)
 
-# to draw area related graph with ggplot2
+## to draw area related graph with ggplot2
 
 fs_area <- subset(diffreport, FS.B.20151016 == 3 & mzmed < 500 & mzmed >100, select = mean1)
 ts_area <- subset(diffreport, TS.B.20151016 == 3 & mzmed < 500 & mzmed >100, select = mean2)
 fs_combine <- cbind(fs, fs_knm, fs_kmd, fs_area)
 ts_combine <- cbind(ts, ts_knm, ts_kmd, ts_area)
-ggplot(fs_n, aes( fs_n$fs_knm, fs_n$fs_kmd, size = fs_n$fs_area, color = fs_n$fs_area)) + geom_point() + 
-  +     scale_colour_gradient2(' fs_n$fs_area')
+
+ggplot(fs_n, aes( fs_n$fs_knm, fs_n$fs_kmd, size = fs_n$fs_area, color = fs_n$fs_area))
