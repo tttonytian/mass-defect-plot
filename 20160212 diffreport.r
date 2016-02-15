@@ -20,19 +20,6 @@ t14_combine <- cbind(t14, t14_knm, t14_kmd, t14_area)
 colnames(t0_combine) <- c ("t0_mas", "t0_knm", "t0_kmd", "t0_area")
 colnames(t14_combine) <- c ("t14_mas", "t14_knm", "t14_kmd", "t14_area")
 
-
-
-plot(up_kmd$mzmed ~ up_knm$mzmed, main = "up mass defect", xlab = "Kendrick nominal mass", ylab = "Kendrick mass defect")
-plot(down_kmd$mzmed ~ down_knm$mzmed, main = "down mass defect", xlab = "Kendrick nominal mass", ylab = "Kendrick mass defect")
-
-up_combine <- cbind(up, up_knm, up_kmd)
-colnames(up_combine) <- c ("up_mas", "up_knm", "up_kmd")
-
-fs_combine <- cbind(fs, fs_knm, fs_kmd)
-ts_combine <- cbind(ts, ts_knm, ts_kmd)
-colnames(fs_combine) <- c ("fs_mas", "fs_knm", "fs_kmd")
-colnames(ts_combine) <- c ("ts_mas", "ts_knm", "ts_kmd")
-
 #extract features that contain one Nitrogen atom
 
 t0_n_9 <- subset(t0_combine, t0_combine$t0_kmd < 0.1076 & t0_combine$t0_kmd > 0.1066 & floor(t0_combine$t0_mas) %% 2 == 0)
