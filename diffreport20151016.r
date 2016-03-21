@@ -66,4 +66,5 @@ ts_area <- subset(diffreport, TS.B.20151016 == 3 & mzmed < 500 & mzmed >100, sel
 fs_combine <- cbind(fs, fs_knm, fs_kmd, fs_area)
 ts_combine <- cbind(ts, ts_knm, ts_kmd, ts_area)
 
-ggplot(fs_n, aes( fs_n$fs_knm, fs_n$fs_kmd, size = fs_n$fs_area, color = fs_n$fs_area))
+ggplot(t0_n, aes(t0_n$t0_knm, t0_n$t0_kmd)) + geom_point(aes(size = t0_n$t0_area, color = "blue", alpha = 1/2))
+ggplot(t14_n, aes(t14_n$t14_knm, t14_n$t14_kmd)) + geom_point(aes(size = t14_n$t14_area, color = "blue", alpha = 1/2)) 
