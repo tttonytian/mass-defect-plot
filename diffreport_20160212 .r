@@ -20,6 +20,7 @@ t14_combine <- cbind(t14, t14_knm, t14_kmd, t14_area)
 colnames(t0_combine) <- c ("t0_mas", "t0_knm", "t0_kmd", "t0_area")
 colnames(t14_combine) <- c ("t14_mas", "t14_knm", "t14_kmd", "t14_area")
 
+
 #extract features that contain one Nitrogen atom
 
 t0_n_9 <- subset(t0_combine, t0_combine$t0_kmd < 0.1076 & t0_combine$t0_kmd > 0.1066 & floor(t0_combine$t0_mas) %% 2 == 0)
@@ -29,6 +30,7 @@ t0_n_12 <- subset(t0_combine, t0_combine$t0_kmd < 0.1478 & t0_combine$t0_kmd > 0
 t0_n_13 <- subset(t0_combine, t0_combine$t0_kmd < 0.1612 & t0_combine$t0_kmd > 0.1602 & floor(t0_combine$t0_mas) %% 2 == 0)
 t0_n_14 <- subset(t0_combine, t0_combine$t0_kmd < 0.1746 & t0_combine$t0_kmd > 0.1736 & floor(t0_combine$t0_mas) %% 2 == 0)
 t0_n_15 <- subset(t0_combine, t0_combine$t0_kmd < 0.1880 & t0_combine$t0_kmd > 0.1870 & floor(t0_combine$t0_mas) %% 2 == 0)
+t0_n_16 <- subset(t0_combine, t0_combine$t0_kmd < 0.2014 & t0_combine$t0_kmd > 0.2004 & floor(t0_combine$t0_mas) %% 2 == 0)
 
 t0_n <- rbind(t0_n_9, t0_n_10, t0_n_11, t0_n_12, t0_n_13, t0_n_14, t0_n_15)
 
@@ -39,11 +41,11 @@ t14_n_12 <- subset(t14_combine, t14_combine$t14_kmd < 0.1478 & t14_combine$t14_k
 t14_n_13 <- subset(t14_combine, t14_combine$t14_kmd < 0.1612 & t14_combine$t14_kmd > 0.1602 & floor(t14_combine$t14_mas) %% 2 == 0)
 t14_n_14 <- subset(t14_combine, t14_combine$t14_kmd < 0.1746 & t14_combine$t14_kmd > 0.1736 & floor(t14_combine$t14_mas) %% 2 == 0)
 t14_n_15 <- subset(t14_combine, t14_combine$t14_kmd < 0.1880 & t14_combine$t14_kmd > 0.1870 & floor(t14_combine$t14_mas) %% 2 == 0)
-
-t14_n <- rbind(t14_n_9, t14_n_10, t14_n_11, t14_n_12, t14_n_13, t14_n_14, t14_n_15)
+t14_n_16 <- subset(t14_combine, t14_combine$t14_kmd < 0.2014 & t14_combine$t14_kmd > 0.2004 & floor(t14_combine$t14_mas) %% 2 == 0)
+t14_n <- rbind(t14_n_9, t14_n_10, t14_n_11, t14_n_12, t14_n_13, t14_n_14, t14_n_15,t14_n_16)
 
 
 ## to draw area related graph with ggplot2
 
-ggplot(t0_n, aes(t0_n$t0_knm, t0_n$t0_kmd, size = t0_n$t0_area, color = t0_n$t0_area)) + geom_point()
-ggplot(t14_n, aes(t14_n$t14_knm, t14_n$t14_kmd, size = t14_n$t14_area, color = t14_n$t14_area)) + geom_point()
+ggplot(t0_n, aes(t0_n$t0_knm, t0_n$t0_kmd)) + geom_point(aes(size = t0_n$t0_area), color = "blue", alpha = 1/4) + scale_size(range = c(0, 10))
+ggplot(t14_n, aes(t14_n$t14_knm, t14_n$t14_kmd)) + geom_point(aes(size = t14_n$t14_area), color = "blue", alpha = 1/4) + scale_size(range = c(0, 5.5))
