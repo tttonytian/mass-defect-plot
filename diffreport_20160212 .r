@@ -47,5 +47,6 @@ t14_n <- rbind(t14_n_9, t14_n_10, t14_n_11, t14_n_12, t14_n_13, t14_n_14, t14_n_
 
 ## to draw area related graph with ggplot2
 
-ggplot(t0_n, aes(t0_n$t0_knm, t0_n$t0_kmd)) + geom_point(aes(size = t0_n$t0_area), color = "blue", alpha = 1/4) + scale_size(range = c(0, 10))
-ggplot(t14_n, aes(t14_n$t14_knm, t14_n$t14_kmd)) + geom_point(aes(size = t14_n$t14_area), color = "blue", alpha = 1/4) + scale_size(range = c(0, 5.5))
+
+ggplot(t0_n, aes(t0_n$t0_knm, t0_n$t0_kmd)) + geom_point(aes(size = t0_n$t0_area), color = "blue", alpha = 1/4) + scale_size(range = c(0, 10), name = "peak\nintensity") + xlim(140, 320) + xlab("Kendrick nominal mass") + ylab("Kendrick mass defect") + ggtitle("SC azaarenes 0 day")
+ggplot(t14_n, aes(t14_n$t14_knm, t14_n$t14_kmd)) + geom_point(aes(size = t14_n$t14_area), color = "blue", alpha = 1/4) + scale_size(range = c(0, 5.5), name = "peak\nintensity") + xlim(140, 320) + xlab("Kendrick nominal mass") + ylab("Kendrick mass defect") + ggtitle("SC azaarenes 14 days")
