@@ -36,8 +36,9 @@ fs_n_12 <- subset(fs_combine, fs_combine$fs_kmd < 0.1478 & fs_combine$fs_kmd > 0
 fs_n_13 <- subset(fs_combine, fs_combine$fs_kmd < 0.1612 & fs_combine$fs_kmd > 0.1602 & floor(fs_combine$fs_mas) %% 2 == 0)
 fs_n_14 <- subset(fs_combine, fs_combine$fs_kmd < 0.1746 & fs_combine$fs_kmd > 0.1736 & floor(fs_combine$fs_mas) %% 2 == 0)
 fs_n_15 <- subset(fs_combine, fs_combine$fs_kmd < 0.1880 & fs_combine$fs_kmd > 0.1870 & floor(fs_combine$fs_mas) %% 2 == 0)
+fs_n_16 <- subset(fs_combine, fs_combine$fs_kmd < 0.2014 & fs_combine$fs_kmd > 0.2004 & floor(fs_combine$fs_mas) %% 2 == 0)
 
-fs_n <- rbind(fs_n_9, fs_n_10, fs_n_11, fs_n_12, fs_n_13, fs_n_14, fs_n_15)
+fs_n <- rbind(fs_n_9, fs_n_10, fs_n_11, fs_n_12, fs_n_13, fs_n_14, fs_n_15, fs_n_16)
 
 plot(fs_n$fs_kmd ~ fs_n$fs_knm, main = "feed soil nitrogen containing", xlab ="Kendrick nominal mass", ylab = "Kendrick mass defect")
 
@@ -66,5 +67,6 @@ ts_area <- subset(diffreport, TS.B.20151016 == 3 & mzmed < 500 & mzmed >100, sel
 fs_combine <- cbind(fs, fs_knm, fs_kmd, fs_area)
 ts_combine <- cbind(ts, ts_knm, ts_kmd, ts_area)
 
-ggplot(t0_n, aes(t0_n$t0_knm, t0_n$t0_kmd)) + geom_point(aes(size = t0_n$t0_area, color = "blue", alpha = 1/2))
-ggplot(t14_n, aes(t14_n$t14_knm, t14_n$t14_kmd)) + geom_point(aes(size = t14_n$t14_area, color = "blue", alpha = 1/2)) 
+
+##FS corrected, but not TS
+ggplot(fs_n, aes(fs_n$fs_knm, fs_n$fs_kmd)) + geom_point(aes(size = fs_n$fs_area), color = "blue", alpha = 1/4) + scale_size(range = c(0, 8), name = "peak\nintensity") + xlim(140, 320) + xlab("Kendrick nominal mass") + ylab("Kendrick mass defect") + ggtitle("FS azaarenes")
